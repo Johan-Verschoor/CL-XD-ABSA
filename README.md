@@ -37,9 +37,9 @@ Cross-Learning (CL) Cross-Domain (XD) using LCR-Rot-hop++ with Domain Adversaria
 
 4. **Tune hyperparameters**: Run `main_hyper.py` to  find the optimal hyperparameter settings. `main_test.py` already contains the optimal hyperparameters for the base model as found by the authors.
 
-5. **Adjust additional settings**: Changing settings in `config.py`, `main_test.py` or `main_hyper.py` allows for running the model with other settings for e.g. epochs, adding or leaving out neutral sentiment, etc.
+5. **Adjust additional settings**: Changing settings in `config.py`, `main_test.py` or `main_hyper.py` allows for running the model with other settings for e.g. epochs, adding or leaving out neutral sentiment, etc..
 
-5. **Adjust discriminator structure**: `nn_layer.py` can be used to change the structure of the discriminator
+5. **Adjust discriminator structure**: `nn_layer.py` can be used to change the structure of the discriminator.
 
 6. **Run the model**: Fill `main_test.py` with the hyperparameters of choice and run the model for a given amount of epochs. Results will be stored in Result_Files, including runtime, accuracy per sentiment polarity, train accuracy and general (maximum) test accuracy.
 
