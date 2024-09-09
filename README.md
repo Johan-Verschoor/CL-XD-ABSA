@@ -35,7 +35,7 @@ Cross-Learning (CL) Cross-Domain (XD) using LCR-Rot-hop++ with Domain Adversaria
 
 3. **Get BERT embeddings**: Run `bert_prepare.py` to obtain the raw data for your required domains (restaurant, laptop, and book). Place the files in the embedding directories, and rename them if necessary.
 
-4. **Tune hyperparameters**: Run `main_hyper.py` to  find the optimal hyperparameter settings. `main_test.py` already contains the optimal hyperparameters for the base model.
+4. **Tune hyperparameters**: Run `main_hyper.py` to  find the optimal hyperparameter settings. `main_test.py` already contains the optimal hyperparameters for the base model as found by the authors.
 
 5. **Adjust additional settings**: Changing settings in `config.py`, `main_test.py` or `main_hyper.py` allows for running the model with other settings for e.g. epochs, adding or leaving out neutral sentiment, etc.
 
