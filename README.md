@@ -1,6 +1,6 @@
-# DAT-LCR-Rot-hop++
+# CL-XD-ABSA
 
-Cross-Domain (CD) Aspect-Based Sentiment Classification (ABSC) using LCR-Rot-hop++ with Domain Adversarial Training (DAT).
+Cross-Learning (CL) Cross-Domain (XD) using LCR-Rot-hop++ with Domain Adversarial Training for Aspect-Based Sentiment Analysis (ABSA).
 
 # Project Setup Instructions
 
@@ -27,20 +27,34 @@ Cross-Domain (CD) Aspect-Based Sentiment Classification (ABSC) using LCR-Rot-hop
 3. **Copy Project Files**:
    - Copy all files from this repository into your virtual environment directory.
     
-## How to use?
-- Adjust the paths in config.py, main$\_$test.py, and main$\_$hyper.py 
-- Get raw data for your required domains by running raw$\_$data.py for restaurant, laptop, and book domain.
-- Get BERT embeddings by running generate_bert_embeddings.ipynb for your required domains *using Google Colab* to obtain BERT embeddings or download them from https://drive.google.com/drive/folders/10QzWzfGQnAXwdSNUp16241QHHWcKYILn?usp=sharing and put them in correct folder: "\getBERT\dataBERT". 
-- Run prepare_bert.py for your required domains.
-- Tune hyperparameters to your specific task using main_hyper.py or use hyperparameters as pre-set in main_test.py.
-- Adjust the additional settings in config.py. For instance, choosing to add neutral sentiments to positive class
-- Adjust in nn_layer.py the structure of the discriminator if wanted
-- Select tests to run and run main_test.py (running all tests will take a long time, 5-8 minutes per iteration). Make
-  sure write_result is set to True if you want the results to be saved to a text file.
+## How to Use
+
+1. **Set Up Paths**: Create the necessary paths in your virtual environment as specified in `config.py`, `main_test.py`, and `main_hyper.py`.
+
+2. **Generate Raw Data**: Run `raw_data.py` to obtain the raw data for your required domains (restaurant, laptop, and book).
+
+3. **Get BERT embeddings**: Run `bert_prepare.py` to obtain the raw data for your required domains (restaurant, laptop, and book).
+
+4. **Tune hyperparameters**: Run `main_hyper.py` to  find the optimal hyperparameter settings. main_test.py already contains the optimal hyperparameters for the base model.
+
+5. **Adjust additional settings**: Changing settings in config.py, main_test.py or main_hyper.py allows for running the model with other settings for e.g. epochs, adding or leaving out neutral sentiment, etc.
+
+5. **Adjust discriminator structure**: nn_layer.py can be used to change the structure of the discriminator
+
+6. **Run the model**: Fill main_test.py with the hyperparameters of choice and run the model for a given amount of epochs. Results will be stored in Result_Files, including runtime, accuracy per sentiment polarity, train accuracy and general (maximum) test accuracy.
+
 
 ## References.
 
-This code is adapted from Trusca, Wassenberg, Frasincar and Dekker (2020).
+This code is adapted from Knoester, Frasincar and Truşca. (2022).
+
+https://github.com/jorisknoester/DAT-LCR-Rot-hop-PLUS-PLUS/
+
+Knoester, J., Frasincar, F., and Truşca, M. M. (2022). Domain adversarial training for aspect-
+based sentiment analysis. In 22nd International Conference on Web Information Systems
+Engineering (WISE 2022), volume 13724 of LNCS, pages 21–37. Springer.
+
+The work of Knoester et al. is an extension on the work of Trusca, Wassenberg, Frasincar and Dekker (2020).
 
 https://github.com/mtrusca/HAABSA_PLUS_PLUS
 
