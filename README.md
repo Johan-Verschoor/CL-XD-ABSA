@@ -2,16 +2,30 @@
 
 Cross-Domain (CD) Aspect-Based Sentiment Classification (ABSC) using LCR-Rot-hop++ with Domain Adversarial Training (DAT).
 
-## Set-up instructions.
+# Project Setup Instructions
 
-- Set-up a virtual environment:
-    - Make sure you have a recent release of Python installed (we used Python 3.7), if not download
-      from: https://www.python.org/downloads/
-    - Download Anaconda: https://www.anaconda.com/products/individual
-    - Set-up a virtual environment in Anaconda using Python 3.7 in order to be able to install protobuf 3.19 and tensorflow 1.15 package. Newer versions of python are incompatible.
-    - Install the requirements by running the following command:
-      ```pip install -r requirements.txt```
-    - Copy all software from this repository into a file in the virtual environment.
+1. **Install Python 3.7**: Ensure you have Python 3.7 installed, as newer versions are incompatible with the required packages. Download Python from [here](https://www.python.org/downloads/).
+2. **Install Anaconda**: Download and install Anaconda from [this link](https://www.anaconda.com/products/individual).
+
+## Virtual Environment Setup
+1. **Create a Virtual Environment**:
+   - Open Anaconda and create a virtual environment using Python 3.7:
+     ```bash
+     conda create --name_of_env python=3.7
+     ```
+   - Activate the environment:
+     ```bash
+     conda activate name_of_env
+     ```
+     
+2. **Install Dependencies**:
+   - Run the following command to install required packages (including `protobuf 3.19` and `tensorflow 1.15`):
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+3. **Copy Project Files**:
+   - Copy all files from this repository into your virtual environment directory.
     
 ## How to use?
 - Adjust the paths in config.py, main$\_$test.py, and main$\_$hyper.py 
