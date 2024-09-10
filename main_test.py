@@ -35,11 +35,11 @@ def main(_):
     rest_book = False  # Run restaurant-book model.
     lapt_rest = False  # Run laptop-restaurant model.
     lapt_book = False  # Run laptop-book model.
-    book_rest = False  # Run book-restaurant model.
-    book_lapt = True  # Run book-laptop model.
+    book_rest = True  # Run book-restaurant model.
+    book_lapt = False  # Run book-laptop model.
     write_result = True  # Write results to text file.
 
-    n_iter = 10  # Number of iterations.
+    n_iter = 50  # Number of iterations.
     FLAGS.n_iter = n_iter
 
     # For each model specify the desired batch sizes in order to have equal number of batches for both source and
@@ -50,46 +50,46 @@ def main(_):
         FLAGS.batch_size_tar = 15
         FLAGS.batch_size_te = 701
         run_CLRH(source_domain="restaurant", target_domain="laptop", year_source=2014, year_target=2014,
-                learning_rate_dis=0.01, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.85, momentum_f=0.85,
-                l2_dis=0.001, l2_f=0.001, balance_lambda=1.0, write_result=write_result)
+                learning_rate_dis=0.005, learning_rate_f=0.005, keep_prob=0.3, momentum_dis=0.80, momentum_f=0.90,
+                l2_dis=0.001, l2_f=0.0001, balance_lambda=0.6, write_result=write_result)
 
     if rest_book:
         FLAGS.batch_size_src = 24
         FLAGS.batch_size_tar = 18
         FLAGS.batch_size_te = 804
         run_CLRH(source_domain="restaurant", target_domain="book", year_source=2014, year_target=2019,
-                 learning_rate_dis=0.01, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.85, momentum_f=0.85,
-                 l2_dis=0.001, l2_f=0.001, balance_lambda=1.0, write_result=write_result)
+                 learning_rate_dis=0.03, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.90, momentum_f=0.80,
+                 l2_dis=0.0001, l2_f=0.001, balance_lambda=1.1, write_result=write_result)
 
     if lapt_rest:
         FLAGS.batch_size_src = 15
         FLAGS.batch_size_tar = 24
         FLAGS.batch_size_te = 1122
         run_CLRH(source_domain="laptop", target_domain="restaurant", year_source=2014, year_target=2014,
-                 learning_rate_dis=0.01, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.85, momentum_f=0.85,
-                 l2_dis=0.001, l2_f=0.001, balance_lambda=1.0, write_result=write_result)
+                 learning_rate_dis=0.03, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.90, momentum_f=0.80,
+                 l2_dis=0.001, l2_f=0.01, balance_lambda=1.1, write_result=write_result)
     if lapt_book:
         FLAGS.batch_size_src = 20
         FLAGS.batch_size_tar = 24
         FLAGS.batch_size_te = 804
         run_CLRH(source_domain="laptop", target_domain="book", year_source=2014, year_target=2019,
-                 learning_rate_dis=0.01, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.85, momentum_f=0.85,
-                 l2_dis=0.001, l2_f=0.001, balance_lambda=1.0, write_result=write_result)
+                 learning_rate_dis=0.005, learning_rate_f=0.005, keep_prob=0.3, momentum_dis=0.85, momentum_f=0.80,
+                 l2_dis=0.01, l2_f=0.001, balance_lambda=0.6, write_result=write_result)
     if book_rest:
         FLAGS.batch_size_src = 18
         FLAGS.batch_size_tar = 24
         FLAGS.batch_size_te = 1122
         run_CLRH(source_domain="book", target_domain="restaurant", year_source=2019, year_target=2014,
-                 learning_rate_dis=0.01, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.85, momentum_f=0.85,
-                 l2_dis=0.001, l2_f=0.001, balance_lambda=1.0, write_result=write_result)
+                 learning_rate_dis=0.01, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.80, momentum_f=0.85,
+                 l2_dis=0.0001, l2_f=0.001, balance_lambda=0.6, write_result=write_result)
 
     if book_lapt:
         FLAGS.batch_size_src = 24
         FLAGS.batch_size_tar = 20
         FLAGS.batch_size_te = 701
         run_CLRH(source_domain="book", target_domain="laptop", year_source=2019, year_target=2014,
-                 learning_rate_dis=0.01, learning_rate_f=0.01, keep_prob=0.3, momentum_dis=0.85, momentum_f=0.85,
-                 l2_dis=0.001, l2_f=0.001, balance_lambda=1.0, write_result=write_result)
+                 learning_rate_dis=0.03, learning_rate_f=0.03, keep_prob=0.3, momentum_dis=0.80, momentum_f=0.85,
+                 l2_dis=0.0001, l2_f=0.001, balance_lambda=1.1, write_result=write_result)
 
     print('Finished program successfully.')
 

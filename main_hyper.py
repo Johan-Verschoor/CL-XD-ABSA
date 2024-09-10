@@ -42,7 +42,7 @@ def main():
     book_rest = ["book", 2019, "restaurant", 2014, 18, 24, 1122]
     book_lapt = ["book", 2019, "laptop", 2014, 24, 20, 701]
 
-    domains = [lapt_rest, lapt_book]
+    domains = [book_rest, book_lapt]
 
     for domain in domains:
         run_hyper(source_domain=domain[0], source_year=domain[1], target_domain=domain[2], target_year=domain[3],

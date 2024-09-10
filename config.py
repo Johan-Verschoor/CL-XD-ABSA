@@ -181,7 +181,6 @@ def loss_func_domain_discr(d, prob, weights, flag):
                 loss += FLAGS.l2_dis * tf.nn.l2_loss(w)
     return loss
 
-
 def acc_func(y, prob):
     """
     Computes accuracy of class and domain discriminator
