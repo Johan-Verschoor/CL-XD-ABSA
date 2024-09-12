@@ -20,6 +20,7 @@ from att_layer import bilinear_attention_layer, dot_produce_attention_layer
 from config import *
 from nn_layer import class_discriminator, domain_discriminator, bi_dynamic_rnn, reduce_mean_with_len
 from utils import load_w2v, batch_index, load_inputs_twitter
+from cl import cosine_similarity, contrastive_loss
 
 sys.path.append(os.getcwd())
 tf.set_random_seed(1)
@@ -134,7 +135,7 @@ def lcr_rot(input_fw, input_bw, sen_len_fw, sen_len_bw, target, sen_len_tr, keep
 
 
 def main(train_path_source, train_path_target, test_path, learning_rate_dis=0.03, learning_rate_f=0.03, keep_prob=0.3,
-         momentum_dis=0.80, momentum_f=0.85, l2_dis=0.001, l2_f=0.001, balance_lambda=0.8):
+         momentum_dis=0.80, momentum_f=0.85, l2_dis=0.001, l2_f=0.001, balance_lambda=0.8, tau_d=0.07, tau_c=0.07, lambda_dcl=0.0, lambda_ccl=0.5):
     """
     Runs the CLRH neural network. Method adapted from Trusca et al. (2020), no original
     docstring provided.
@@ -180,6 +181,7 @@ def main(train_path_source, train_path_target, test_path, learning_rate_dis=0.03
             tar_len_src = tf.placeholder(tf.int32, [None])
 
             x_tar = tf.placeholder(tf.int32, [None, FLAGS.max_sentence_len])  # input sentence
+            y_tar = tf.placeholder(tf.float32, [None, FLAGS.n_class])  # sentiment label
             d_tar = tf.placeholder(tf.float32, [None, FLAGS.n_domain])  # domain label
 
             sen_len_tar = tf.placeholder(tf.int32, None)
@@ -229,14 +231,36 @@ def main(train_path_source, train_path_target, test_path, learning_rate_dis=0.03
         loss_domain_target = loss_func_domain_discr(d_tar, prob_domain_target, weights, False)
         acc_num_domain_source, acc_prob_domain_source = acc_func(d_src, prob_domain_source)
         acc_num_domain_target, acc_prob_domain_target = acc_func(d_tar, prob_domain_target)
-        loss_domain = loss_domain_target + loss_domain_source
+
+        # Concatenate the feature representations from the source and target domains
+        outputs_fin_combined = tf.concat([outputs_fin_source, outputs_fin_target], axis=0)
+
+        # Concatenate the domain labels from the source and target domains
+        d_combined = tf.concat([d_src, d_tar], axis=0)
+        y_combined = tf.concat([y_src, y_tar], axis=0)
+
+        # Compute the contrastive loss for both domains combined
+        contrastive_domain_loss = contrastive_loss(outputs_fin_combined, d_combined, tau_d)
+        loss_domain_target_source = loss_domain_target + loss_domain_source
+        loss_domain = (1 - lambda_dcl) * loss_domain_target_source + lambda_dcl * contrastive_domain_loss
         acc_num_domain = acc_num_domain_source + acc_num_domain_target
 
         # Pass only the source domain through the class discriminator and calculate its loss
         with tf.variable_scope("class", reuse=tf.AUTO_REUSE) as scope:
             prob_class, weights = class_discriminator(outputs_fin_source, keep_prob_all, l2_f, '1', False)
-        loss_class = loss_func_class_discr(y_src, prob_class, weights)
+
+        contrastive_class_loss = contrastive_loss(outputs_fin_combined, y_combined, tau_c)
+        loss_class_basic = loss_func_class_discr(y_src, prob_class, weights)
+        loss_class = (1 - lambda_ccl) * loss_class_basic + lambda_ccl * contrastive_class_loss
         acc_num_class, acc_prob_class = acc_func(y_src, prob_class)
+
+        # Add print operations for the four parts
+        print_ops = tf.print(
+            "Loss Domain Target + Source:", loss_domain_target_source,
+            "Contrastive Domain Loss:", contrastive_domain_loss,
+            "Basic Class Loss:", loss_class_basic,
+            "Contrastive Class Loss:", contrastive_class_loss
+        )
 
         # Define total loss of CLRH++ model
         loss_f = loss_class - balance_lambda * loss_domain + 0.0001
@@ -338,6 +362,7 @@ def main(train_path_source, train_path_target, test_path, learning_rate_dis=0.03
                     tar_len_src: batch_tl_src[index_src],
                     d_src: domain_src[index_src],
                     x_tar: x_f_tar[index_tar],
+                    y_tar: yi_tar[index_tar],
                     x_bw_tar: x_b_tar[index_tar],
                     sen_len_tar: sen_len_f_tar[index_tar],
                     sen_len_bw_tar: sen_len_b_tar[index_tar],
@@ -387,9 +412,11 @@ def main(train_path_source, train_path_target, test_path, learning_rate_dis=0.03
                                                                  src_domain, tar_domain, False):
                 train_count += numtrain
                 train_count_tar += train_count_t
-                _, _, step, _domain_trainacc, _class_trainacc = sess.run(
-                    [opti_min_domain, opti_feature, global_step, acc_num_domain, acc_num_class],
+                _, _, step, _domain_trainacc, _class_trainacc, _ = sess.run(
+                    [opti_min_domain, opti_feature, global_step, acc_num_domain, acc_num_class, print_ops],
+                    # Include print_ops here
                     feed_dict=train)
+
                 domain_trainacc += _domain_trainacc
                 class_trainacc += _class_trainacc
 
