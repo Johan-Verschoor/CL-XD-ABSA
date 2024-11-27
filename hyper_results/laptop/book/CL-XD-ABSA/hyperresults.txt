@@ -1,0 +1,120 @@
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.627778, Test accuracy: 0.322222
+Maximum. Test accuracy: 0.361111
+---
+Test results.
+Positive. Correct: 114, Incorrect: 22, Total: 136
+Neutral. Correct: 17, Incorrect: 328, Total: 345
+Negative. Correct: 43, Incorrect: 16, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.190000, Test accuracy: 0.638889
+Maximum. Test accuracy: 0.638889
+---
+Test results.
+Positive. Correct: 0, Incorrect: 136, Total: 136
+Neutral. Correct: 345, Incorrect: 0, Total: 345
+Negative. Correct: 0, Incorrect: 59, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.689444, Test accuracy: 0.364815
+Maximum. Test accuracy: 0.364815
+---
+Test results.
+Positive. Correct: 103, Incorrect: 33, Total: 136
+Neutral. Correct: 54, Incorrect: 291, Total: 345
+Negative. Correct: 40, Incorrect: 19, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.190000, Test accuracy: 0.638889
+Maximum. Test accuracy: 0.638889
+---
+Test results.
+Positive. Correct: 0, Incorrect: 136, Total: 136
+Neutral. Correct: 345, Incorrect: 0, Total: 345
+Negative. Correct: 0, Incorrect: 59, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.192222, Test accuracy: 0.638889
+Maximum. Test accuracy: 0.638889
+---
+Test results.
+Positive. Correct: 0, Incorrect: 136, Total: 136
+Neutral. Correct: 345, Incorrect: 0, Total: 345
+Negative. Correct: 0, Incorrect: 59, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.693889, Test accuracy: 0.344444
+Maximum. Test accuracy: 0.366667
+---
+Test results.
+Positive. Correct: 119, Incorrect: 17, Total: 136
+Neutral. Correct: 37, Incorrect: 308, Total: 345
+Negative. Correct: 30, Incorrect: 29, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.708889, Test accuracy: 0.348148
+Maximum. Test accuracy: 0.348148
+---
+Test results.
+Positive. Correct: 109, Incorrect: 27, Total: 136
+Neutral. Correct: 37, Incorrect: 308, Total: 345
+Negative. Correct: 42, Incorrect: 17, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.675556, Test accuracy: 0.346296
+Maximum. Test accuracy: 0.357407
+---
+Test results.
+Positive. Correct: 103, Incorrect: 33, Total: 136
+Neutral. Correct: 37, Incorrect: 308, Total: 345
+Negative. Correct: 47, Incorrect: 12, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.650556, Test accuracy: 0.420370
+Maximum. Test accuracy: 0.424074
+---
+Test results.
+Positive. Correct: 107, Incorrect: 29, Total: 136
+Neutral. Correct: 74, Incorrect: 271, Total: 345
+Negative. Correct: 46, Incorrect: 13, Total: 59
+---
+Train data source. Positive: 774, Neutral: 342, Negative: 684, Total: 1800
+Train data target. Positive: 560, Neutral: 1360, Negative: 240, Total: 2160
+Test data. Positive: 136, Neutral: 345, Negative: 59, Total: 540
+---
+LCR-Rot-Hop++. Train accuracy: 0.626667, Test accuracy: 0.327778
+Maximum. Test accuracy: 0.329630
+---
+Test results.
+Positive. Correct: 105, Incorrect: 31, Total: 136
+Neutral. Correct: 27, Incorrect: 318, Total: 345
+Negative. Correct: 45, Incorrect: 14, Total: 59
+---
