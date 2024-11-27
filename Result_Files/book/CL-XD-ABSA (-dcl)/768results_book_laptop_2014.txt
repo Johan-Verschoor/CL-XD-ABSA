@@ -1,0 +1,16 @@
+book to laptop
+---
+Train data source. Positive: 696, Neutral: 1705, Negative: 299, Total: 2700
+Train data target. Positive: 961, Neutral: 445, Negative: 844, Total: 2250
+Test data. Positive: 367, Neutral: 184, Negative: 150, Total: 701
+---
+LCR-Rot-Hop++. Train accuracy: 0.869259, Test accuracy: 0.741797
+Maximum. Test accuracy: 0.757489
+---
+Test results.
+Positive. Correct: 323, Incorrect: 44, Total: 367
+Neutral. Correct: 63, Incorrect: 121, Total: 184
+Negative. Correct: 134, Incorrect: 16, Total: 150
+---
+Runtime: 92241.64717197418 seconds.
+
