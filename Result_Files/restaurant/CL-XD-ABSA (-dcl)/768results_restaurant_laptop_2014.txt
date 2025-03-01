@@ -1,0 +1,16 @@
+restaurant to laptop
+---
+Train data source. Positive: 2164, Neutral: 633, Negative: 805, Total: 3602
+Train data target. Positive: 961, Neutral: 445, Negative: 844, Total: 2250
+Test data. Positive: 367, Neutral: 184, Negative: 150, Total: 701
+---
+LCR-Rot-Hop++. Train accuracy: 0.774292, Test accuracy: 0.657632
+Maximum. Test accuracy: 0.679030
+---
+Test results.
+Positive. Correct: 350, Incorrect: 17, Total: 367
+Neutral. Correct: 1, Incorrect: 183, Total: 184
+Negative. Correct: 110, Incorrect: 40, Total: 150
+---
+Runtime: 3594.0983889102936 seconds.
+
